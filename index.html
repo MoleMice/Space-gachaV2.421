@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ASTRA — Cosmic RNG</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="spaceBackground"></div>
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-symbol">✦</div>
+
+        <div>
+            <div class="brand-name">ASTRA</div>
+            <div class="brand-sub">COSMIC ARCHIVE</div>
+        </div>
+    </div>
+
+    <div class="currency-display">
+        <span class="currency-star">✦</span>
+        <span id="stardust">0</span>
+        <span class="currency-label">STARDUST</span>
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- PLANETS -->
+
+    <section id="planetsPage" class="page active">
+
+        <div class="page-header">
+
+            <div>
+                <div class="eyebrow">OBSERVATORY</div>
+                <h1>PLANETS</h1>
+                <p>Click your discovered object to collect Stardust.</p>
+            </div>
+
+        </div>
+
+
+        <div class="planet-layout">
+
+            <div class="planet-card">
+
+                <div id="planetSpace" class="planet-space">
+
+                    <div class="deep-stars"></div>
+
+                    <div class="planet-orbit orbit-a"></div>
+                    <div class="planet-orbit orbit-b"></div>
+
+                    <div
+                        id="planetVisual"
+                        class="celestial planet-moon"
+                    >
+
+                        <div class="planet-atmosphere"></div>
+
+                        <div class="planet-surface">
+
+                            <div class="planet-crater crater-1"></div>
+                            <div class="planet-crater crater-2"></div>
+                            <div class="planet-crater crater-3"></div>
+                            <div class="planet-crater crater-4"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="clickHint"
+                        class="click-hint"
+                    >
+                        CLICK TO COLLECT
+                    </div>
+
+                </div>
+
+
+                <div class="planet-info">
+
+                    <div>
+
+                        <div
+                            id="planetRarity"
+                            class="rarity-label"
+                        >
+                            COMMON
+                        </div>
+
+                        <h2 id="planetName">
+                            Moon
+                        </h2>
+
+                        <p id="planetDescription">
+                            Earth's natural satellite.
+                        </p>
+
+                    </div>
+
+
+                    <div class="click-power">
+
+                        <span>PER CLICK</span>
+
+                        <strong id="planetPower">
+                            +1
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <aside class="stats-panel">
+
+                <div class="panel-heading">
+                    YOUR OBSERVATORY
+                    <span class="online-dot"></span>
+                </div>
+
+
+                <div class="stat-row">
+                    <span>STARDUST</span>
+                    <strong id="totalStardust">0</strong>
+                </div>
+
+                <div class="stat-row">
+                    <span>DISCOVERIES</span>
+                    <strong id="discoveredCount">1</strong>
+                </div>
+
+                <div class="stat-row">
+                    <span>RAREST</span>
+                    <strong id="highestRarity">COMMON</strong>
+                </div>
+
+                <div class="stat-row">
+                    <span>EQUIPPED</span>
+                    <strong id="currentObject">Moon</strong>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- GACHA -->
+
+    <section id="gachaPage" class="page">
+
+        <div class="page-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    DEEP SPACE SCANNER
+                </div>
+
+                <h1>GACHA</h1>
+
+                <p>
+                    Search the cosmos for your next discovery.
+                </p>
+
+            </div>
+
+
+            <div class="banner-countdown">
+
+                <span>BANNER ROTATES IN</span>
+
+                <strong id="bannerTimer">
+                    10:00
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="banner">
+
+            <div class="banner-heading">
+
+                <div>
+
+                    <span>CURRENT EXPEDITION</span>
+
+                    <h2 id="bannerName">
+                        DEEP SPACE
+                    </h2>
+
+                </div>
+
+                <div class="banner-index">
+                    01
+                </div>
+
+            </div>
+
+
+            <div
+                id="bannerItems"
+                class="banner-items"
+            ></div>
+
+        </div>
+
+
+        <div class="gacha-section">
+
+            <div
+                id="telescope"
+                class="telescope"
+            >
+
+                <div class="telescope-body">
+
+                    <div class="scope-ring outer"></div>
+
+                    <div class="scope-ring inner"></div>
+
+
+                    <div
+                        id="scopeStars"
+                        class="scope-stars"
+                    ></div>
+
+
+                    <div
+                        id="cutsceneObject"
+                        class="cutscene-object"
+                    ></div>
+
+
+                    <div
+                        id="rarityFlash"
+                        class="rarity-flash"
+                    ></div>
+
+
+                    <div class="scope-crosshair">
+
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <div
+                        id="scanLine"
+                        class="scan-line"
+                    ></div>
+
+
+                    <div
+                        id="cutsceneText"
+                        class="cutscene-text"
+                    >
+                        READY
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="gacha-controls">
+
+                <div class="gacha-cost">
+                    <span>SEARCH COST</span>
+                    <strong>100 ✦</strong>
+                </div>
+
+
+                <button
+                    id="searchButton"
+                    class="search-button"
+                >
+                    SEARCH THE COSMOS
+                </button>
+
+
+                <p class="gacha-help">
+                    The search begins when you enter the telescope.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- INVENTORY -->
+
+    <section id="inventoryPage" class="page">
+
+        <div class="page-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    CELESTIAL ARCHIVE
+                </div>
+
+                <h1>INVENTORY</h1>
+
+                <p>
+                    Every object you've discovered.
+                </p>
+
+            </div>
+
+
+            <div class="inventory-total">
+
+                <strong id="inventoryCount">
+                    1
+                </strong>
+
+                <span>DISCOVERED</span>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="inventoryGrid"
+            class="inventory-grid"
+        ></div>
+
+    </section>
+
+
+
+    <!-- LEADERBOARD -->
+
+    <section id="leaderboardPage" class="page">
+
+        <div class="page-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    GLOBAL OBSERVATORY
+                </div>
+
+                <h1>LEADERBOARD</h1>
+
+                <p>
+                    The greatest astronomers in the archive.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="leaderboard">
+
+            <div class="leader-tabs">
+
+                <button
+                    class="leader-tab active"
+                    data-board="stardust"
+                >
+                    STARDUST
+                </button>
+
+                <button
+                    class="leader-tab"
+                    data-board="rarity"
+                >
+                    RAREST
+                </button>
+
+                <button
+                    class="leader-tab"
+                    data-board="discoveries"
+                >
+                    DISCOVERIES
+                </button>
+
+            </div>
+
+
+            <div
+                id="leaderboardList"
+                class="leaderboard-list"
+            ></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- NAVIGATION -->
+
+<nav class="navigation">
+
+    <button
+        class="nav-button active"
+        data-page="planetsPage"
+    >
+        <span>◉</span>
+        <small>PLANETS</small>
+    </button>
+
+
+    <button
+        class="nav-button"
+        data-page="gachaPage"
+    >
+        <span>✦</span>
+        <small>GACHA</small>
+    </button>
+
+
+    <button
+        class="nav-button"
+        data-page="inventoryPage"
+    >
+        <span>▦</span>
+        <small>INVENTORY</small>
+    </button>
+
+
+    <button
+        class="nav-button"
+        data-page="leaderboardPage"
+    >
+        <span>♜</span>
+        <small>RANKINGS</small>
+    </button>
+
+</nav>
+
+
+<div
+    id="notification"
+    class="notification"
+></div>
+
+
+<script src="game.js"></script>
+
+</body>
+</html>
