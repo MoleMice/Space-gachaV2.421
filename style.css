@@ -407,22 +407,19 @@ h1 {
 
 .celestial {
     position: relative;
-
     width: 185px;
     height: 185px;
+    aspect-ratio: 1 / 1;
 
-    border-radius: 50%;
+    border-radius: 0;
 
     z-index: 5;
-
     cursor: pointer;
 
     animation:
-        celestialFloat
-        5s ease-in-out infinite;
-
-    transition:
-        filter .2s ease;
+        celestialFloat 5s ease-in-out infinite,
+        celestialRotate 18s linear infinite;
+    transition: filter .2s ease;
 }
 
 .celestial:hover {
@@ -1911,29 +1908,35 @@ h1 {
 }
 
 .inventory-visual {
+    position: relative;
+
     width: 78px;
     height: 78px;
 
-    margin:
-        4px auto 17px;
+    margin: 4px auto 17px;
 
-    border-radius: 50%;
+    border-radius: 0;
 
-    background:
-        radial-gradient(
-            circle at 30% 25%,
-            white,
-            var(--object-color),
-            #060811
-        );
-
-    box-shadow:
-        0 0 35px
-        var(--object-color);
+    background: transparent;
+    box-shadow: none;
 
     animation:
         inventoryFloat
         4s ease-in-out infinite;
+}
+
+.inventory-visual .celestial-body {
+    position: absolute;
+
+    left: 8%;
+    top: 8%;
+
+    width: 84%;
+    height: 84%;
+
+    border-radius: 0 !important;
+
+    margin: 0;
 }
 
 @keyframes inventoryFloat {
@@ -3840,12 +3843,11 @@ main,
     }
 
     .celestial {
-        width:
-            min(185px, 55vw);
-
-        height:
-            min(185px, 55vw);
-    }
+        width: min(185px, 55vw);
+        height: min(185px, 55vw);
+        aspect-ratio: 1 / 1;
+        border-radius: 0;
+    }   
 
     .planet-orbit {
         width: 125%;
@@ -4342,24 +4344,21 @@ main,
 
 .celestial {
     position: relative;
+    width: 185px;
+    height: 185px;
+    aspect-ratio: 1 / 1;
 
-    width: min(185px, 55vw);
-    height: min(185px, 55vw);
+    border-radius: 0;
+    z-index: 5;
+    cursor: pointer;
 
-    min-width: 0;
-    min-height: 0;
+    animation:
+        celestialFloat 5s ease-in-out infinite,
+        celestialRotate 18s linear infinite;
+    transition: filter .2s ease;
 
     max-width: none;
     max-height: none;
-
-    aspect-ratio: 1 / 1;
-
-    flex: 0 0 auto;
-
-    border-radius: 50%;
-
-    isolation: isolate;
-    overflow: visible;
 }
 
 
@@ -4382,7 +4381,7 @@ main,
 
     aspect-ratio: 1 / 1;
 
-    border-radius: 50%;
+    border-radius: 0;
 
     overflow: hidden;
 
@@ -4473,8 +4472,6 @@ main,
         inset 10px 8px 18px rgba(255,255,255,.14),
         0 0 25px var(--object-color-soft);
 
-    transform:
-        rotate(var(--surface-rotation));
 }
 
 
@@ -6000,4 +5997,59 @@ main,
         );
 
     pointer-events: none;
+}
+
+.celestial,
+.celestial-body,
+.celestial-surface,
+.celestial-atmosphere,
+.celestial-clouds,
+.celestial-storm,
+.celestial-core,
+.celestial-energy {
+    border-radius: 0 !important;
+}
+
+.inventory-visual,
+.inventory-visual::before,
+.inventory-visual::after {
+    border-radius: 0 !important;
+}
+
+@keyframes celestialRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ROTATE INVENTORY CUBES */
+
+.inventory-visual {
+    animation:
+        inventoryCubeFloat 4s ease-in-out infinite,
+        inventoryCubeRotate 12s linear infinite;
+}
+
+@keyframes inventoryCubeRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes inventoryCubeFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
 }
