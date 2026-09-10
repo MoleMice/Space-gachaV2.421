@@ -400,7 +400,7 @@ function getScanCost() {
    SAVE
 ========================================================= */
 
-const SAVE_VERSION = 2.402;
+const SAVE_VERSION = 2.403;
 
 const savedVersion =
     Number(
