@@ -13,7 +13,7 @@ let planetRotation = 0;
 const DEV_MODE = false;
 
 // Change these while developing.
-const DEV_STARTING_STARDUST = 99999999999999999999;
+const DEV_STARTING_STARDUST = 999999999999999999999999999999999999;
 
 // Set to true to unlock every planet/object at the start.
 const DEV_UNLOCK_ALL_PLANETS = false;
@@ -400,7 +400,7 @@ function getScanCost() {
    SAVE
 ========================================================= */
 
-const SAVE_VERSION = 2.4;
+const SAVE_VERSION = 2.402;
 
 const savedVersion =
     Number(
