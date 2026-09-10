@@ -4337,29 +4337,71 @@ main,
 
 
 /* =========================================================
-   CELESTIAL RENDERING SAFETY
+   CELESTIAL MOBILE-SAFE GEOMETRY
 ========================================================= */
 
-.celestial,
-.inventory-visual,
-.celestial-body,
-.celestial-surface,
-.celestial-atmosphere,
-.celestial-clouds,
-.celestial-storm,
-.celestial-core,
-.celestial-energy {
-    max-width: 100%;
+.celestial {
+    position: relative;
+
+    width: min(185px, 55vw);
+    height: min(185px, 55vw);
+
+    min-width: 0;
+    min-height: 0;
+
+    max-width: none;
+    max-height: none;
+
+    aspect-ratio: 1 / 1;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    isolation: isolate;
+    overflow: visible;
 }
 
 
-/*
-   If a browser has trouble with one of the more complex
-   generated gradients, the object still has a usable base.
-*/
+/* THE ACTUAL PLANET */
+
 .celestial-body {
-    background-color:
-        var(--object-color, #ffffff);
+    position: absolute;
+
+    left: 8%;
+    top: 8%;
+
+    width: 84%;
+    height: 84%;
+
+    min-width: 0;
+    min-height: 0;
+
+    max-width: none;
+    max-height: none;
+
+    aspect-ratio: 1 / 1;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    z-index: 5;
+}
+
+
+/* INTERNAL LAYERS SHOULD NOT BE WIDTH-CONSTRAINED */
+
+.celestial-atmosphere,
+.celestial-surface,
+.celestial-clouds,
+.celestial-storm,
+.celestial-core,
+.celestial-energy,
+.celestial-particles,
+.rarity-effect {
+    max-width: none;
+    max-height: none;
 }
 
 
